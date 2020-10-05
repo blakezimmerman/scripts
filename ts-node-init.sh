@@ -22,7 +22,7 @@ cat << EOF > $PROJECT_NAME/package.json
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "NODE_PATH=./src ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -35,17 +35,17 @@ cat << EOF > $PROJECT_NAME/tsconfig.json
 {
   "compilerOptions": {
     "sourceMap": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
     "alwaysStrict": true,
+    "strict": true,
     "lib": ["esnext"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es6",
+    "target": "es2019",
     "allowJs": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "src"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
